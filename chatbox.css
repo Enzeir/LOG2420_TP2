@@ -1,0 +1,45 @@
+.windowBoard {
+    width: 95vw;
+    height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px darkgrey;
+    border-collapse: collapse;
+    background-color: darkgrey;
+}
+
+.fullboard{
+    width: 1000px;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: lightgrey;
+    border: 1px black;
+}
+
+.topBanner{
+    width: 100%;
+    height: 80px;
+    display: flex;
+
+    align-items: center;
+
+    background-color: blue;
+}
+
+.appNameBox {
+    display: flex;
+    width: 75%;
+    align-items: baseline;
+    background-color: green;
+}
+
+.appNameBox .appNametext{
+
+}
