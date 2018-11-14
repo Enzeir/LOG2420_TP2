@@ -5,9 +5,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px darkgrey;
     border-collapse: collapse;
-    background-color: darkgrey;
+
 }
 
 .fullboard{
@@ -17,8 +16,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: lightgrey;
-    border: 1px black;
+    background-color: #EEEEEE;
+    border: 1px solid black;
 }
 
 .topBanner{
@@ -28,7 +27,7 @@
 
     align-items: center;
 
-    background-color: lightgrey;
+    background-color: #EEEEEE;
 }
 
 .appNameBox {
@@ -69,7 +68,7 @@
     width: 100%;
     height: 100%;
 
-    border: 1px solid darkgrey;
+    border-top: 1px solid darkgrey;
     display: flex;
     flex-direction: row;
     background-color: white;
@@ -100,9 +99,17 @@
 
 .chatBanner {
     display: flex;
+    flex-direction: column;
     height: 14%;
     width: 100%;
+    color: white;
     background-color: #0b8e64;
+}
+
+
+.chatBanner p{
+    font-size: small;
+    text-indent: 10px;
 }
 
 .chatChannelBoardContainer{

@@ -1,9 +1,8 @@
 
-var Message = {
-    Messages: []
-  , onMessage: function(observer) {
-      /**/
-    }
-  
-    }
+var channelObserver = {
+  channels: []
+  , updateChannelsList: function(observer) {
+    this.channels.push(observer);
+  }
+}
   

@@ -4,7 +4,12 @@
 <head>
     <link rel="stylesheet" href="chatbox.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-	<script type="text/javascript" src="message.js"></script>
+    <script type="text/javascript" src="message.js"></script>
+    <script type="text/javascript" src="channel.js"></script>
+    <script type="text/javascript" src="messagesObserver.js"></script>
+    <script type="text/javascript" src="channelsObserver.js"></script>
+    <script type="text/javascript" src="connectionHandler.js"></script>
+
     <script type="text/javascript" src="main.js"></script>
 </head>
     <body>
@@ -14,8 +19,7 @@
             <div class="fullboard">
                 <div class="topBanner">
                     <div class="topBanner appNameBox">
-                        namebox
-                        <i class="fas fa-users"></i>
+                        <img src="PolyChat.png" />
                     </div>
                     <div class="topBanner topBannerIconBoxContainer">
                         <div class="iconBox">
@@ -39,12 +43,12 @@
                 <div class="chatAppBoard">
                     <div class="chatTextViewBoard">
                         <div class="chatBanner">
-                            </div>
-
+                            <p>Groupe Actif: </p>
                         </div>
+                    </div>
                     <div class="chatChannelViewBoard">
                         <div class="chatBanner">
-
+                            <p>Liste Des Groupes</p>
                         </div>
                         <div class="chatChannelBoardContainer">
                             <div class="chatChannelBoard">
@@ -57,13 +61,9 @@
                                 test3
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
-
-
     </body>
 </html>
