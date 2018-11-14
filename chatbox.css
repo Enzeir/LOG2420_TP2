@@ -86,12 +86,7 @@
 
     background-color: white;
 }
-.chatTextBanner {
-    display: flex;
-    height: 14%;
-    width: 100%;
-    background-color: #0b8e64;
-}
+
 
 .chatChannelViewBoard{
     display: flex;
@@ -103,7 +98,7 @@
     background-color: white;
 }
 
-.chatChannelBanner {
+.chatBanner {
     display: flex;
     height: 14%;
     width: 100%;
