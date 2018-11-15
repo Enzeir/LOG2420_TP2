@@ -15,5 +15,5 @@ function test(){
 	var now = new Date();
 	var message = new Message("onGetChannel","dbf646dc-5006-4d9f-8815-fd37514818ee","this is a test","me",now);
 	var test = JSON.stringify(message);
-	exampleSocket.send(test);
+	websocket.send(test);
 }
