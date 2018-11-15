@@ -9,7 +9,9 @@ class ConnectionHandler {
 	websocketReceive(event)
 	{
 		var msg = JSON.parse(event.data)
-		var type = msg[eventType];
+		var type = msg["eventType"];
+			console.log(type);
+
 		switch(type){
 			case "onMessage":
 				this._onMessage(msg)
