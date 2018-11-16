@@ -1,6 +1,13 @@
 
+ var user;
 
-var websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=TESTNAME");
+function myFunction() {
+    var txt;
+    user = prompt("Please enter your name:");
+
+}
+myFunction() ;
+var websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username="+user);
 var connection = new ConnectionHandler();
 
 websocket.onopen = function(){
@@ -12,8 +19,12 @@ websocket.onmessage = function(event){
 }
 
 function test(){
+		console.log(user);
 	var now = new Date();
-	var message = new Message("onMessage","dbf646dc-5006-4d9f-8815-fd37514818ee","this is a test","me",now);
+	var message = new Message("onMessage","dbf646dc-5006-4d9f-8815-fd37514818ee","this is a test","",now);
+		console.log(message);
 	var test = JSON.stringify(message);
+			console.log(test);
+
 	websocket.send(test);
 }
