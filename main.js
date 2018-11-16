@@ -13,7 +13,7 @@ websocket.onmessage = function(event){
 
 function test(){
 	var now = new Date();
-	var message = new Message("onGetChannel","dbf646dc-5006-4d9f-8815-fd37514818ee","this is a test","me",now);
+	var message = new Message("onMessage","dbf646dc-5006-4d9f-8815-fd37514818ee","this is a test","me",now);
 	var test = JSON.stringify(message);
 	websocket.send(test);
 }
