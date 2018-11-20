@@ -2,7 +2,7 @@
 var messageObserver = {
     Messages: []
   , onMessage: function(msg) {
-      this.Messages.push(msg)
+	this.Messages.push(msg);
 		var row = document.createElement('div');
 		setAttributes(row,{"class": "row"});
 		
@@ -22,7 +22,6 @@ var messageObserver = {
 		row.appendChild(receivedMsg);
 		row.appendChild(dateRcvd);
 		document.getElementById("chat").appendChild(row);
-		console.log(msg);
     }
   
 }

@@ -22,9 +22,9 @@ function test(){
 		console.log(user);
 	var now = new Date();
 	var message = new Message("onMessage","dbf646dc-5006-4d9f-8815-fd37514818ee","this is a test","",now);
-		console.log(message);
+		//console.log(message);
 	var test = JSON.stringify(message);
-			console.log(test);
+			//console.log(test);
 
 	websocket.send(test);
 }
