@@ -1,5 +1,6 @@
 body{
     background-color: #EEEEEE;
+    
 }
 .windowBoard {
     width: 95vw;
@@ -12,7 +13,7 @@ body{
 }
 
 .fullboard{
-    width: 60vw;
+    width: 80vw;
     height: 100vh;
 
     display: flex;
@@ -43,7 +44,7 @@ body{
     text-align: right;
 }
 .row{
-	width: 100%;
+	width: 105%;
 	height: auto;
     display: flex;
 	flex-direction: column;
@@ -137,7 +138,7 @@ div.dateSent {
     display: block;
     flex-direction: column;
     overflow: scroll;
-
+    overflow-x: hidden;
     height: 85%;
 
 }
@@ -150,7 +151,8 @@ div.dateSent {
 
 .chatInputBox{
     display: flex;
-    height: 77%;
+    align-items: center;
+    height: 65%;
     width: 100%;
 
     box-shadow: 0px 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.2);
@@ -167,17 +169,37 @@ div.dateSent {
     align-items: center;
     justify-content: center;
 
-    font-size: 250%;
+    font-size: 200%;
     background-color: #5F9EA0;
 
     color: white;
 }
+.chatInputBox textarea{
+    height: 95%;
+    width: 70%;
+    border: none;
+    resize: none;
+}
+.chatSendBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width: 15%;
+    background-color: #5F9EA0;
+    color: white;
+
+}
 
 .chatInputBox input{
     height: 100%;
-    width: 60%;
-}
+    width: 15%;
+    align-items: center;
+    justify-content: center;
+    background-color: #5F9EA0;
+    color: white;
 
+}
 .chatTextViewBoard {
     display: flex;
     flex-direction: column;
@@ -189,7 +211,6 @@ div.dateSent {
 
     background-color: white;
 }
-
 .chatChannelViewBoard{
     display: flex;
     flex-direction: column;
@@ -199,21 +220,18 @@ div.dateSent {
 
     background-color: white;
 }
-
 .chatBanner {
     display: flex;
     flex-direction: column;
     height: 14%;
     width: 100%;
     color: white;
-    background-color: #0b8e64;
+    background-color: #5F9EA0;
 }
-
 .chatBanner p{
     font-size: small;
     text-indent: 10px;
 }
-
 .chatChannelBoardContainer{
     height: 86%;
     width: 100%;
@@ -222,7 +240,6 @@ div.dateSent {
     flex-direction: column;
     align-items:center;
 }
-
 .chatChannelBoard{
     height: 35px;
     width: 90%;
@@ -237,9 +254,7 @@ div.dateSent {
     * lightgrey channel BG color: #F9F9F9;
     * darkgrey channel BG color: #EEEEEE;
     */
-
 }
-
 .channelIconBox {
     height: 30px;
     width: 50px;
@@ -249,7 +264,6 @@ div.dateSent {
     align-items: center;
     font-size: 22px;
 }
-
 .channelIconBox i{
     color: #FF671B;
     

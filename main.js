@@ -18,6 +18,13 @@ websocket.onmessage = function(event){
 	connection.websocketReceive(event);
 }
 
+function inputTest()
+{
+	var text = document.getElementById("messageInput").value;
+	console.log(text);
+	document.getElementById("messageInput").value = "";
+}
+
 function test(){
 		console.log(user);
 	var now = new Date();
