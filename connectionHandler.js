@@ -2,10 +2,8 @@
 
 
 class ConnectionHandler {
-
 	constructor(event)
 	{}
-
 	websocketReceive(event)
 	{
 					console.log(event);
@@ -15,7 +13,7 @@ class ConnectionHandler {
 			console.log(msg);
 		switch(type){
 			case "onMessage":
-				this._onMessage(msg)
+				messageObserver.onMessage(msg)
 				break;
 			case "onCreateChannel":
 				this._onCreateChannel(msg);

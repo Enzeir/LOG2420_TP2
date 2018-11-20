@@ -9,7 +9,7 @@ function myFunction() {
 myFunction() ;
 var websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username="+user);
 var connection = new ConnectionHandler();
-
+	
 websocket.onopen = function(){
 	console.log("open");
 }
