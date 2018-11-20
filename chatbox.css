@@ -120,7 +120,10 @@ div.dateSent {
     flex-direction: row;
     background-color: white;
 }
-
+.scrollingBar {
+	overflow: auto;
+	height: 86%;
+}
 .chatTextViewBoard {
     display: flex;
     flex-direction: column;
