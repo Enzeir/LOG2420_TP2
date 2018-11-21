@@ -2,6 +2,10 @@
 var channelObserver = {
    updateChannelsList: function(msg) {
     console.log("--------------------------");
+    var myNode = document.getElementById("channels");
+    while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+    }
     console.log(msg);
     var channels = msg.data;
     for (var i in channels) {
@@ -10,10 +14,12 @@ var channelObserver = {
       var channelIcon = document.createElement('div');
       setAttributes(channelIcon,{"class": "channelIconBox"});
       var iconType = "fas fa-plus";
-      name = channels[i]["name"] ;
-      if( name== "Général"){
+      if( channels[i]["name"]  == "Général"){
         iconType = "fas fa-star";
         console.log(channels[i]["name"]);
+      }
+      else if(channels[i]["joinStatus"]){
+        iconType = "fas fa-minus";
       }
       var Icon = document.createElement('i');
       setAttributes(Icon,{"class": iconType});
@@ -26,11 +32,3 @@ var channelObserver = {
   }
 }
 }
-/*
-<div class="chatChannelBoard">
-    <div class="channelIconBox">
-        <i class="fas fa-star"></i>
-    </div>
-    <p>General</p>
-</div>
-*/

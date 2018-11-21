@@ -32,8 +32,9 @@ function inputTest()
 function test(){
 		
 	var now = new Date();
-	var message = new Message("onMessage","dbf646dc-5006-4d9f-8815-fd37514818ee","this is a test","",now);
+	var message = new Message("onJoinChannel","12aebde1-bb7e-4e63-bcef-3123d14d3f16","this is a test","",now);
 	var test = JSON.stringify(message);
 
 	websocket.send(test);
 }
+
