@@ -28,6 +28,6 @@ var messageObserver = {
 		row.appendChild(dateRcvd);
 		document.getElementById("chat").appendChild(row);
     }
-  
+
 }
   

@@ -31,8 +31,11 @@ function inputTest()
 function joinChannel(channelId)
 {
 	var message = new Message("onJoinChannel",channelId);
+	var message2 = new Message("onGetChannel",channelId);
 	var jSONmessage = JSON.stringify(message);
+	var jSONmessage2 = JSON.stringify(message2);
 	websocket.send(jSONmessage);
+	websocket.send(jSONmessage2);
 	
 }
 function test(){

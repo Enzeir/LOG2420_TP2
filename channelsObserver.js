@@ -32,4 +32,15 @@ var channelObserver = {
       document.getElementById("channels").appendChild(channel);
   }
 }
+,
+onGetChannel : function(msg){
+  var myNode = document.getElementById("chat");
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+  }
+  var test = msg.data["messages"];
+  for (var i in test) {
+    messageObserver.onMessage(test[i]);
+  }
+}
 }

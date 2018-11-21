@@ -6,8 +6,6 @@ class ConnectionHandler {
 	{}
 	websocketReceive(event)
 	{
-					console.log(event);
-
 		var msg = JSON.parse(event.data)
 		var type = msg["eventType"];
 			console.log(msg);
@@ -30,18 +28,14 @@ class ConnectionHandler {
 			case "onError":
 				this._onError(msg);
 				break;
+			case "onGetChannel":
+			channelObserver.onGetChannel(msg)
+			break;			
 			default:
 				console.log("Event type not recognized!");
 				break;
 		}
 	}
-/*
-	<div class="row">
-		<div class="name"> elie </div>
-		<div class="receivedMsg"> hi my name is jeff </div>
-		<div class="dateRcvd"> lundi 12.04:14</div>
-	</div>
-*/
 
 	_onCreateChannel(msg)
 	{
