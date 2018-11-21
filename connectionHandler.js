@@ -25,7 +25,7 @@ class ConnectionHandler {
 				this._onLeaveChannel(msg);
 				break;
 			case "updateChannelsList":
-				this._updateChannelsList(msg);
+			channelObserver.updateChannelsList(msg);
 				break;
 			case "onError":
 				this._onError(msg);
@@ -42,30 +42,7 @@ class ConnectionHandler {
 		<div class="dateRcvd"> lundi 12.04:14</div>
 	</div>
 */
-	_onMessage(msg)
-	{
 
-		var row = document.createElement('div');
-		setAttributes(row,{"class": "row"});
-		
-		var name = document.createElement('div');
-		setAttributes(name,{"class": "name"});
-		name.innerText= msg["sender"];
-		
-		var receivedMsg = document.createElement('div');
-		setAttributes(receivedMsg,{"class": "receivedMsg"});
-		receivedMsg.innerText= msg["data"];
-				
-		var dateRcvd = document.createElement('div');
-		setAttributes(dateRcvd,{"class": "dateRcvd"});
-		dateRcvd.innerText= msg["timestamp"];
-		
-		row.appendChild(name);
-		row.appendChild(receivedMsg);
-		row.appendChild(dateRcvd);
-		document.getElementById("chat").appendChild(row);
-		console.log(msg);
-	}
 	_onCreateChannel(msg)
 	{
 		console.log(msg);

@@ -1,21 +1,26 @@
 
 var messageObserver = {
-    Messages: []
-  , onMessage: function(msg) {
-	this.Messages.push(msg);
+   
+   onMessage: function(msg) {
 		var row = document.createElement('div');
 		setAttributes(row,{"class": "row"});
-		
+
+		var msgType = "sentMsg";
+		var timeType = "dateSent";
 		var name = document.createElement('div');
-		setAttributes(name,{"class": "name"});
-		name.innerText= msg["sender"];
+		if (msg["sender"] != user){
+			msgType = "receivedMsg";
+			timeType = "dateRcvd";
+			setAttributes(name,{"class": "name"});
+			name.innerText= msg["sender"];
+		}
 		
 		var receivedMsg = document.createElement('div');
-		setAttributes(receivedMsg,{"class": "receivedMsg"});
+		setAttributes(receivedMsg,{"class": msgType});
 		receivedMsg.innerText= msg["data"];
 				
 		var dateRcvd = document.createElement('div');
-		setAttributes(dateRcvd,{"class": "dateRcvd"});
+		setAttributes(dateRcvd,{"class": timeType});
 		dateRcvd.innerText= msg["timestamp"];
 		
 		row.appendChild(name);

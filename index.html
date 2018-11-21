@@ -9,8 +9,8 @@
     <script type="text/javascript" src="messagesObserver.js"></script>
     <script type="text/javascript" src="channelsObserver.js"></script>
     <script type="text/javascript" src="connectionHandler.js"></script>
-
     <script type="text/javascript" src="main.js"></script>
+    <meta charset="UTF-8">
 </head>
     <body>
 	<input type="button" onclick ="test()"/>
@@ -47,15 +47,6 @@
                         </div>
                         <div class="chatViewBox">
                             <div id="chat"class="chatTextBox">
-                                <div class="row">
-                                    <div class="name"> elie </div>
-                                    <div class="receivedMsg"> hi my name is jeff </div>
-                                    <div class="dateRcvd"> lundi 12.04:14</div>
-                                </div>
-                                <div class="row">
-                                    <div class="sentMsg"> hi jeff no one cares </div>
-                                    <div class="dateSent"> lundi 12.04:14</div>
-                                </div>
                             </div>
                             <div class="chatInputBoard" >
                                 <div class="chatInputBox">
@@ -77,14 +68,14 @@
                         <div class="chatBanner">
                             <p>Liste Des Groupes</p>
                         </div>
-                        <div class="chatChannelBoardContainer">
-                            <div class="chatChannelBoard">
+                        <div id="channels" class="chatChannelBoardContainer">
+                           <!-- <div class="chatChannelBoard">
                                 <div class="channelIconBox">
                                     <i class="fas fa-star"></i>
                                 </div>
                                 <p>General</p>
                             </div>
-                            <!-- TODO: remove the style of the div -->
+                            // TODO: remove the style of the div 
                             <div class="chatChannelBoard" style=" background-color: #EEEEEE">
                                 <div class="channelIconBox">
                                     <i class="fas fa-minus"></i>
@@ -93,11 +84,11 @@
                             </div>
                             <div class="chatChannelBoard">
                                 <div class="channelIconBox">
-                                    <!-- TODO: remove the style of the div -->
+                                    // TODO: remove the style of the div 
                                     <i class="fas fa-plus" style = "color: #5F9EA0"></i>                                    
                                 </div>
                                 <p>Channel 2</p>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
