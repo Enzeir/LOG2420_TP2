@@ -10,11 +10,12 @@ var channelObserver = {
     var channels = msg.data;
     for (var i in channels) {
       var channel = document.createElement('div');
-      setAttributes(channel,{"class": "chatChannelBoard"});
+      setAttributes(channel,{"class": "chatChannelBoard", "onclick": "joinChannel('"+channels[i]["id"]+"')"});
       var channelIcon = document.createElement('div');
       setAttributes(channelIcon,{"class": "channelIconBox"});
       var iconType = "fas fa-plus";
-      if( channels[i]["name"]  == "Général"){
+      var name = channels[i]["name"] ;
+      if( name  == "Général"){
         iconType = "fas fa-star";
         console.log(channels[i]["name"]);
       }

@@ -28,11 +28,17 @@ function inputTest()
 	websocket.send(jSONmessage);
 	}
 }
-
+function joinChannel(channelId)
+{
+	var message = new Message("onJoinChannel",channelId);
+	var jSONmessage = JSON.stringify(message);
+	websocket.send(jSONmessage);
+	
+}
 function test(){
 		
 	var now = new Date();
-	var message = new Message("onJoinChannel","12aebde1-bb7e-4e63-bcef-3123d14d3f16","this is a test","",now);
+	var message = new Message("onJoinChannel","241071d2-7a2d-4070-9732-9094ca70c7cc","this is a test","",now);
 	var test = JSON.stringify(message);
 
 	websocket.send(test);
