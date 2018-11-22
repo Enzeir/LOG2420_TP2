@@ -13,7 +13,9 @@
     <meta charset="UTF-8">
 </head>
     <body onload="updateUsername()">
-	<input type="button" onclick ="test()"/>
+        <!--
+	    <input type="button" onclick ="test()"/>
+        -->
         <h2>Equipe 18 -- TD2</h2>
         <div class="windowBoard">
             <div class="fullboard">
@@ -56,9 +58,6 @@
                                     <div class="chatInputThumbsUpBox">
                                         <i class="far fa-thumbs-up"></i>
                                     </div>
-                                    <!--
-                                    <input type="text" name="messageInput" placeholder="Votre message ici">
-                                    -->
                                     <textarea id="messageInput" placeholder="Votre message ici..."></textarea>
                                     <div class="chatSendBox" onclick="inputTest()">
                                         Envoyer
@@ -70,6 +69,15 @@
                     <div class="chatChannelViewBoard">
                         <div class="chatBanner">
                             <p>Liste Des Groupes</p>
+                            <div class="chatBannerChannelContainer">
+                                <h2>Groupe Disponibles</h2>
+                                <div class="chatBannerIconBox" onclick="createChannel()">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <div class="chatBannerIconBox">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                            </div>
                         </div>
                         <div id="channels" class="chatChannelBoardContainer">
                            <!-- <div class="chatChannelBoard">

@@ -23,6 +23,10 @@ var channelObserver = {
         iconType = "fas fa-minus";
       }
       var Icon = document.createElement('i');
+      if(iconType == "fas fa-plus")
+      {
+        setAttributes(Icon, {"style": "color: #5F9EA0"});
+      }
       setAttributes(Icon,{"class": iconType});
       var channelName = document.createElement('p');
       channelName.innerText = name; 

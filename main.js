@@ -1,16 +1,7 @@
 
- var user;
-
- 
-function myFunction() {
-	var txt;
-	user = prompt("Please enter your name:");
-
-}
-myFunction();
+var user = prompt("Please enter your name:");
 
 var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
-
 
 function updateUsername()
 {
@@ -37,6 +28,7 @@ function inputTest()
 	websocket.send(jSONmessage);
 	}
 }
+
 function joinChannel(channelId)
 {
 	var message = new Message("onJoinChannel",channelId);
@@ -46,6 +38,22 @@ function joinChannel(channelId)
 	websocket.send(jSONmessage);
 	websocket.send(jSONmessage2);
 	
+}
+
+function leaveChannel()
+{
+
+}
+
+function createChannel()
+{
+	var channelName = prompt("Please enter the channel name: ");
+	var createChannelMessage = new Message("onCreateChannel", channelName);
+	var JSONCreateChannel = JSON.stringify(createChannelMessage);
+	var updateChannelList = new Message("updateChannelsList");
+	var JSONUpdateChannel = JSON.stringify(updateChannelList);
+	websocket.send(JSONCreateChannel);
+	websocket.send(JSONUpdateChannel);
 }
 
 function test(){
