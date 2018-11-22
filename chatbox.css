@@ -15,6 +15,7 @@ body{
 .fullboard{
     width: 80vw;
     height: 100vh;
+    min-height: 650px;
 
     display: flex;
     align-items: center;
@@ -236,6 +237,9 @@ div.dateSent {
     height: 86%;
     width: 100%;
 
+    overflow: scroll;
+    overflow-x: hidden;
+
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -245,7 +249,6 @@ div.dateSent {
     width: 90%;
 
     display: flex;
-    /*justify-content: center;*/
     align-items: center;
     background-color: #F9F9F9;
     color: #327AB7;

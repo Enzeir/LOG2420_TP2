@@ -1,13 +1,20 @@
 
  var user;
 
+ 
 function myFunction() {
     var txt;
-    user = prompt("Please enter your name:");
-
 }
-myFunction() ;
-var websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username="+user);
+window.onload = myFunction();
+
+var websocket = new WebSocket();
+function updateUsername()
+{
+	user = prompt("Please enter your name:");
+	document.getElementById("usernameText").innerHTML = user;
+	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
+}
+
 var connection = new ConnectionHandler();
 	
 websocket.onopen = function(){
@@ -38,6 +45,7 @@ function joinChannel(channelId)
 	websocket.send(jSONmessage2);
 	
 }
+
 function test(){
 		
 	var now = new Date();
@@ -46,4 +54,3 @@ function test(){
 
 	websocket.send(test);
 }
-

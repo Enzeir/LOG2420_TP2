@@ -55,6 +55,7 @@ class ConnectionHandler {
 	}
 	_onError(msg)
 	{
+		alert(msg["data"]);
 		console.log(msg);
 	}
 }
