@@ -3,16 +3,18 @@
 
  
 function myFunction() {
-    var txt;
-}
-window.onload = myFunction();
+	var txt;
+	user = prompt("Please enter your name:");
 
-var websocket = new WebSocket();
+}
+myFunction();
+
+var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
+
+
 function updateUsername()
 {
-	user = prompt("Please enter your name:");
 	document.getElementById("usernameText").innerHTML = user;
-	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 }
 
 var connection = new ConnectionHandler();

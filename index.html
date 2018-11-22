@@ -12,17 +12,17 @@
     <script type="text/javascript" src="main.js"></script>
     <meta charset="UTF-8">
 </head>
-    <body onload="main()">
+    <body onload="updateUsername()">
 	<input type="button" onclick ="test()"/>
         <h2>Equipe 18 -- TD2</h2>
         <div class="windowBoard">
             <div class="fullboard">
                 <div class="topBanner">
-                    <div class="topBanner appNameBox">
+                    <div class="appNameBox">
                         <img src="PolyChat.png" />
                     </div>
                     <div class="topBanner topBannerIconBoxContainer">
-                        <div class="iconBox">
+                        <div class="iconBox" onclick="location.reload()">
                             <i class="far fa-user"></i>
                             <p id="usernameText">username</p>
                         </div>
