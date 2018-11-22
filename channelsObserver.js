@@ -33,14 +33,15 @@ var channelObserver = {
   }
 }
 ,
-onGetChannel : function(msg){
-  var myNode = document.getElementById("chat");
-  while (myNode.firstChild) {
-    myNode.removeChild(myNode.firstChild);
+  onGetChannel : function(msg){
+    var myNode = document.getElementById("chat");
+    while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+    }
+    var test = msg.data["messages"];
+    for (var i in test) {
+      messageObserver.onMessage(test[i]);
+    }
+    document.getElementById("groupeActif").innerHTML = msg["data"]["name"];
   }
-  var test = msg.data["messages"];
-  for (var i in test) {
-    messageObserver.onMessage(test[i]);
-  }
-}
 }

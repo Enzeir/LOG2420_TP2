@@ -1,6 +1,4 @@
 
-
-
 class ConnectionHandler {
 	constructor(event)
 	{}

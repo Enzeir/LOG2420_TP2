@@ -158,8 +158,6 @@ div.dateSent {
 
     box-shadow: 0px 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.2);
     flex-direction: row;
-
-
 }
 
 .chatInputThumbsUpBox{
@@ -233,6 +231,17 @@ div.dateSent {
     font-size: small;
     text-indent: 10px;
 }
+
+.chatBannerActiveGroup{
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+.chatBannerActiveGroup h2{
+    text-indent: 10px;
+}
+
 .chatChannelBoardContainer{
     height: 86%;
     width: 100%;
