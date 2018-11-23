@@ -6,7 +6,6 @@ class ConnectionHandler {
 	{
 		var msg = JSON.parse(event.data)
 		var type = msg["eventType"];
-			//console.log(msg);
 		switch(type){
 			case "onMessage":
 				messageObserver.onMessage(msg)
@@ -21,7 +20,7 @@ class ConnectionHandler {
 				this._onLeaveChannel(msg);
 				break;
 			case "updateChannelsList":
-			channelObserver.updateChannelsList(msg);
+				channelObserver.updateChannelsList(msg);
 				break;
 			case "onError":
 				this._onError(msg);

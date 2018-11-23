@@ -1,5 +1,6 @@
 
 var user = prompt("Please enter your name:");
+//default channel to join is general channel
 var currentChannelId = "dbf646dc-5006-4d9f-8815-fd37514818ee";
 var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 
@@ -12,6 +13,7 @@ var connection = new ConnectionHandler();
 	
 websocket.onopen = function(){
 	console.log("open");
+	//join a channel right after the connection has been established
 	joinChannel(currentChannelId);
 }
 //When the websocket receives something send the data over to the connection handler
@@ -50,7 +52,7 @@ function joinChannel(channelId)
 
 function leaveChannel(channelID)
 {
-	var message = new Message("onLeaveChannel", channelID);
+	var message = new Message("onLeaveChannel", channelID, null, user, Date());
 	var JSONmessage = JSON.stringify(message);
 	websocket.send(JSONmessage);
 	console.log("left channel: " + channelID);
@@ -64,11 +66,3 @@ function createChannel()
 	websocket.send(JSONCreateChannel);
 }
 
-function test(){
-		
-	var now = new Date();
-	var message = new Message("onJoinChannel","241071d2-7a2d-4070-9732-9094ca70c7cc","this is a test","",now);
-	var test = JSON.stringify(message);
-
-	websocket.send(test);
-}
