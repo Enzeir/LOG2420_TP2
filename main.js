@@ -1,6 +1,6 @@
 
 var user = prompt("Please enter your name:");
-
+var currentChannelId = "invalid";
 var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 
 function updateUsername()
@@ -23,7 +23,7 @@ function inputTest()
 	var text = document.getElementById("messageInput").value;
 	document.getElementById("messageInput").value = "";
 	if(text != ""){
-	var message = new Message("onMessage","dbf646dc-5006-4d9f-8815-fd37514818ee",text,"");
+	var message = new Message("onMessage", currentChannelId,text,"");
 	var jSONmessage = JSON.stringify(message);
 	websocket.send(jSONmessage);
 	}
@@ -31,13 +31,13 @@ function inputTest()
 
 function joinChannel(channelId)
 {
+	currentChannelId = channelId;
 	var message = new Message("onJoinChannel",channelId);
 	var message2 = new Message("onGetChannel",channelId);
 	var jSONmessage = JSON.stringify(message);
 	var jSONmessage2 = JSON.stringify(message2);
 	websocket.send(jSONmessage);
 	websocket.send(jSONmessage2);
-	
 }
 
 function leaveChannel()

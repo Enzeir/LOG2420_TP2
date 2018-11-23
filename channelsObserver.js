@@ -18,6 +18,8 @@ var channelObserver = {
       if( name  == "Général"){
         iconType = "fas fa-star";
         console.log(channels[i]["name"]);
+        if(currentChannelId == "invalid")
+          currentChannelId = channels[i]["id"];
       }
       else if(channels[i]["joinStatus"]){
         iconType = "fas fa-minus";
