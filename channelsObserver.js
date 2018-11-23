@@ -10,14 +10,27 @@ var channelObserver = {
     var channels = msg.data;
     for (var i in channels) {
       var channel = document.createElement('div');
-      setAttributes(channel,{"class": "chatChannelBoard", "onclick": "joinChannel('"+channels[i]["id"]+"')"});
+      if(i%2 == 0)
+      {
+        setAttributes(channel,{"class": "chatEvenChannelBoard"});
+      }
+      else{
+        setAttributes(channel,{"class": "chatOddChannelBoard"});
+      }
+      if(channels[i]["joinStatus"] == false || channels[i]["name"] == "Général")
+      {
+        setAttributes(channel,{"onclick": "joinChannel('"+channels[i]["id"]+"')"});
+      }else
+      {
+        setAttributes(channel,{"onclick": "leaveChannel('"+channels[i]["id"]+"')"});
+      }
       var channelIcon = document.createElement('div');
       setAttributes(channelIcon,{"class": "channelIconBox"});
       var iconType = "fas fa-plus";
-      var name = channels[i]["name"] ;
+      var name = channels[i]["name"];
+      console.log(channels[i]["name"]);
       if( name  == "Général"){
         iconType = "fas fa-star";
-        console.log(channels[i]["name"]);
         if(currentChannelId == "invalid")
           currentChannelId = channels[i]["id"];
       }

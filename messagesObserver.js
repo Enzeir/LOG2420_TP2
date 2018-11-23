@@ -1,8 +1,10 @@
+var weekDays = [ "DIM.","LUN.","MAR.", "MER.", "JEU.", "VEN.", "SAM."];
 
 var messageObserver = {
    
    onMessage: function(msg) {
 		var row = document.createElement('div');
+		console.log(msg);
 		if(currentChannelId == msg["channelId"]){
 			setAttributes(row,{"class": "row"});
 			var msgType = "sentMsg";
@@ -21,7 +23,9 @@ var messageObserver = {
 					
 			var dateRcvd = document.createElement('div');
 			setAttributes(dateRcvd,{"class": timeType});
-			dateRcvd.innerText= msg["timestamp"];
+			var time = new Date(msg["timestamp"]);
+			var timeStamp = weekDays[time.getDay()] + " " + time.getDate() + ", " + time.getHours() + ":" + time.getMinutes();
+			dateRcvd.innerText = timeStamp;
 			
 			row.appendChild(name);
 			row.appendChild(receivedMsg);

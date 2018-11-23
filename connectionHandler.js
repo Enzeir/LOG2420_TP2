@@ -6,7 +6,7 @@ class ConnectionHandler {
 	{
 		var msg = JSON.parse(event.data)
 		var type = msg["eventType"];
-			console.log(msg);
+			//console.log(msg);
 		switch(type){
 			case "onMessage":
 				messageObserver.onMessage(msg)
@@ -27,8 +27,8 @@ class ConnectionHandler {
 				this._onError(msg);
 				break;
 			case "onGetChannel":
-			channelObserver.onGetChannel(msg)
-			break;			
+				channelObserver.onGetChannel(msg)
+				break;			
 			default:
 				console.log("Event type not recognized!");
 				break;
@@ -47,14 +47,11 @@ class ConnectionHandler {
 	{
 		console.log(msg);
 	}
-	_updateChannelsList(msg)
-	{
-		console.log(msg);
-	}
 	_onError(msg)
 	{
 		alert(msg["data"]);
 		console.log(msg);
+		location.reload();
 	}
 }
 function setAttributes(el, attrs)

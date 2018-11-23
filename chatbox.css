@@ -4,7 +4,7 @@ body{
 }
 .windowBoard {
     width: 95vw;
-    height: 700px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,8 +12,8 @@ body{
     border-collapse: collapse;
 }
 .fullboard{
-    width: 80vw;
-    height: 100vh;
+    width: 80%;
+    height: 95vh;
     min-height: 650px;
 
     display: flex;
@@ -163,6 +163,7 @@ div.dateSent {
 .chatInputBox textarea{
     height: 100%;
     width: 70%;
+    font-family: Arial, Helvetica, sans-serif;
     border: none;
     resize: none;
 }
@@ -264,7 +265,7 @@ div.dateSent {
     flex-direction: column;
     align-items:center;
 }
-.chatChannelBoard{
+.chatEvenChannelBoard{
     height: 35px;
     width: 90%;
 
@@ -278,6 +279,18 @@ div.dateSent {
     * darkgrey channel BG color: #EEEEEE;
     */
 }
+ .chatOddChannelBoard
+{
+    height: 35px;
+    width: 90%;
+
+    display: flex;
+    align-items: center;
+    
+    background-color: #EEEEEE;
+    color: #327AB7;
+}
+
 .channelIconBox {
     height: 30px;
     width: 50px;
