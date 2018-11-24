@@ -278,6 +278,20 @@ div.dateSent {
     * darkgrey channel BG color: #EEEEEE;
     */
 }
+.chatEvenChannelBoard .generalChatDefaultBox{
+    height: 60%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+    border-radius: 10px;
+    color: #327AB7;
+    border: #327AB7;
+    background-color: white;
+}
  .chatOddChannelBoard
 {
     height: 35px;

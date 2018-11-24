@@ -10,13 +10,15 @@ var channelObserver = {
     var channels = msg.data;
     for (var i in channels) {
       var channel = document.createElement('div');
+      setAttributes(channel,{"onclick": "getChannel('"+channels[i]["id"]+"')"});
       if(i%2 == 0)
       {
         setAttributes(channel,{"class": "chatEvenChannelBoard"});
-      }
-      else{
+      }else
+      {
         setAttributes(channel,{"class": "chatOddChannelBoard"});
       }
+      /*
       if(channels[i]["joinStatus"] == false || channels[i]["name"] == "Général")
       {
         setAttributes(channel,{"onclick": "joinChannel('"+channels[i]["id"]+"')"});
@@ -24,18 +26,21 @@ var channelObserver = {
       {
         setAttributes(channel,{"onclick": "leaveChannel('"+channels[i]["id"]+"')"});
       }
+      */
       var channelIcon = document.createElement('div');
-      setAttributes(channelIcon,{"class": "channelIconBox"});
+      setAttributes(channelIcon,{"class": "channelIconBox", "onclick": "joinChannel('"+channels[i]["id"]+"')"});
       var iconType = "fas fa-plus";
       var name = channels[i]["name"];
       console.log(channels[i]["name"]);
-      if( name  == "Général"){
+      if(name  == "Général"){
         iconType = "fas fa-star";
+        //setAttributes(channelIcon,{"id": "GeneralChannelIcon"});
         if(currentChannelId == "invalid")
           currentChannelId = channels[i]["id"];
       }
       else if(channels[i]["joinStatus"]){
         iconType = "fas fa-minus";
+        setAttributes(channelIcon, {"onclick": "leaveChannel('"+channels[i]["id"]+"')" })
       }
       var Icon = document.createElement('i');
       if(iconType == "fas fa-plus")
@@ -49,6 +54,7 @@ var channelObserver = {
       channel.appendChild(channelIcon);
       channel.appendChild(channelName);
       document.getElementById("channels").appendChild(channel);
+      document.getElementsByClassName("channelIconBox")[0].removeAttribute("onclick");
   }
 }
 ,

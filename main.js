@@ -2,7 +2,8 @@
 var user = prompt("Please enter your name:");
 //default channel to join is general channel
 var currentChannelId = "dbf646dc-5006-4d9f-8815-fd37514818ee";
-var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
+//var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
+var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);
 
 function updateUsername()
 {
@@ -21,8 +22,6 @@ websocket.onmessage = function(event){
 	connection.websocketReceive(event);
 }
 
-
-
 websocket.onclose = function(){
 	console.log("Connection closed")
 }
@@ -38,15 +37,20 @@ function sendMessage()
 	}
 }
 
+function getChannel(channelId){
+	var message = new Message("onGetChannel", channelId);
+	var JSONmessage = JSON.stringify(message);
+	websocket.send(JSONmessage);
+	currentChannelId = channelId;
+}
+
 function joinChannel(channelId)
 {
 	currentChannelId = channelId;
 	var message = new Message("onJoinChannel",channelId, null, user, Date());
-	var message2 = new Message("onGetChannel",channelId);
 	var jSONmessage = JSON.stringify(message);
-	var jSONmessage2 = JSON.stringify(message2);
 	websocket.send(jSONmessage);
-	websocket.send(jSONmessage2);
+	getChannel(channelId);
 	console.log("joined Channel: " + channelId);
 }
 

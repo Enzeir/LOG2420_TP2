@@ -29,6 +29,7 @@ class ConnectionHandler {
 				channelObserver.onGetChannel(msg)
 				break;			
 			default:
+				console.log(msg);
 				console.log("Event type not recognized!");
 				break;
 		}
@@ -36,7 +37,11 @@ class ConnectionHandler {
 
 	_onCreateChannel(msg)
 	{
-		console.log(msg);
+		var channelName = prompt("Please enter the channel name: ");
+		var createChannelMessage = new Message("onCreateChannel", null, channelName, user, Date());
+		var JSONCreateChannel = JSON.stringify(createChannelMessage);
+		websocket.send(JSONCreateChannel);
+		console.log("Creating channel: " + channelName);
 	}
 	_onJoinChannel(msg)
 	{
@@ -50,7 +55,6 @@ class ConnectionHandler {
 	{
 		alert(msg["data"]);
 		console.log(msg);
-		location.reload();
 	}
 }
 function setAttributes(el, attrs)

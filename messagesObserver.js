@@ -31,7 +31,7 @@ var messageObserver = {
 			row.appendChild(receivedMsg);
 			row.appendChild(dateRcvd);
 			document.getElementById("chat").appendChild(row);
-    }
+    	}
 	}
 }
   
