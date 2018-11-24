@@ -30,6 +30,8 @@ var messageObserver = {
 			row.appendChild(receivedMsg);
 			row.appendChild(dateRcvd);
 			document.getElementById("chat").appendChild(row);
+		var test =	document.getElementById("chat");
+		test.scrollTop = test.scrollHeight;
     	}
 	}
 }

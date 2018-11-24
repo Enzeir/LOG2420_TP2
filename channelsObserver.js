@@ -50,6 +50,7 @@ var channelObserver = {
 ,
   onGetChannel : function(msg){
     var myNode = document.getElementById("chat");
+    currentChannelId = msg["data"]["id"]
     while (myNode.firstChild) {
       myNode.removeChild(myNode.firstChild);
     }
@@ -58,5 +59,6 @@ var channelObserver = {
       messageObserver.onMessage(test[i]);
     }
     document.getElementById("groupeActif").innerHTML = msg["data"]["name"];
+
   }
 }
