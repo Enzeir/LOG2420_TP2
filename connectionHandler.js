@@ -21,6 +21,7 @@ class ConnectionHandler {
 				break;
 			case "updateChannelsList":
 				channelObserver.updateChannelsList(msg);
+				getChannel(currentChannelId, true);
 				break;
 			case "onError":
 				this._onError(msg);

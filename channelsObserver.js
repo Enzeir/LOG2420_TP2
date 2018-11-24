@@ -6,11 +6,11 @@ var channelObserver = {
     while (myNode.firstChild) {
       myNode.removeChild(myNode.firstChild);
     }
-    console.log(msg);
     var channels = msg.data;
+    console.log(channels);
     for (var i in channels) {
       var channel = document.createElement('div');
-      setAttributes(channel,{"onclick": "getChannel('"+channels[i]["id"]+"')"});
+      setAttributes(channel,{"onclick": "getChannel('"+channels[i]["id"]+"',"+channels[i]["joinStatus"]+")"});
       if(i%2 == 0)
       {
         setAttributes(channel,{"class": "chatEvenChannelBoard"});
@@ -18,23 +18,13 @@ var channelObserver = {
       {
         setAttributes(channel,{"class": "chatOddChannelBoard"});
       }
-      /*
-      if(channels[i]["joinStatus"] == false || channels[i]["name"] == "Général")
-      {
-        setAttributes(channel,{"onclick": "joinChannel('"+channels[i]["id"]+"')"});
-      }else
-      {
-        setAttributes(channel,{"onclick": "leaveChannel('"+channels[i]["id"]+"')"});
-      }
-      */
       var channelIcon = document.createElement('div');
       setAttributes(channelIcon,{"class": "channelIconBox", "onclick": "joinChannel('"+channels[i]["id"]+"')"});
       var iconType = "fas fa-plus";
       var name = channels[i]["name"];
-      console.log(channels[i]["name"]);
       if(name  == "Général"){
         iconType = "fas fa-star";
-        //setAttributes(channelIcon,{"id": "GeneralChannelIcon"});
+        generalChannelId = channels[i]["id"];
         if(currentChannelId == "invalid")
           currentChannelId = channels[i]["id"];
       }

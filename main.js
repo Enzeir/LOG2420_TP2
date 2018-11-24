@@ -1,7 +1,10 @@
 
 var user = prompt("Please enter your name:");
 //default channel to join is general channel
-var currentChannelId = "dbf646dc-5006-4d9f-8815-fd37514818ee";
+//le generale n'a pas toujours le meme id d'apres mes tests
+// j'ai set le currentChannelId dans updateChannelsList
+var currentChannelId = "invalid";
+var generalChannelId = "invalid";
 //var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);
 
@@ -12,12 +15,6 @@ function updateUsername()
 
 var connection = new ConnectionHandler();
 	
-websocket.onopen = function(){
-	console.log("open");
-	//join a channel right after the connection has been established
-	joinChannel(currentChannelId);
-}
-//When the websocket receives something send the data over to the connection handler
 websocket.onmessage = function(event){
 	connection.websocketReceive(event);
 }
@@ -37,11 +34,13 @@ function sendMessage()
 	}
 }
 
-function getChannel(channelId){
-	var message = new Message("onGetChannel", channelId);
-	var JSONmessage = JSON.stringify(message);
-	websocket.send(JSONmessage);
-	currentChannelId = channelId;
+function getChannel(channelId, joined){
+	if(joined){
+		console.log("test");
+		var message = new Message("onGetChannel", channelId);
+		var JSONmessage = JSON.stringify(message);
+		websocket.send(JSONmessage);
+	}
 }
 
 function joinChannel(channelId)
@@ -50,16 +49,17 @@ function joinChannel(channelId)
 	var message = new Message("onJoinChannel",channelId, null, user, Date());
 	var jSONmessage = JSON.stringify(message);
 	websocket.send(jSONmessage);
-	getChannel(channelId);
 	console.log("joined Channel: " + channelId);
 }
 
 function leaveChannel(channelID)
 {
+	if(channelID == currentChannelId)
+		currentChannelId = "invalid";
 	var message = new Message("onLeaveChannel", channelID, null, user, Date());
 	var JSONmessage = JSON.stringify(message);
 	websocket.send(JSONmessage);
-	console.log("left channel: " + channelID);
+	console.log("left channel: " + channelID);	
 }
 
 function createChannel()

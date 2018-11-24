@@ -4,7 +4,6 @@ var messageObserver = {
    
    onMessage: function(msg) {
 		var row = document.createElement('div');
-		console.log(msg);
 		if(currentChannelId == msg["channelId"]){
 			setAttributes(row,{"class": "row"});
 			var msgType = "sentMsg";
