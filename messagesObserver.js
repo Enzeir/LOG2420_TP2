@@ -14,7 +14,7 @@ var messageObserver = {
 				timeType = "dateRcvd";
 				setAttributes(name,{"class": "name"});
 				name.innerText= msg["sender"];
-				if(newMessage){
+				if(newMessage && soundSet){
 				var sound = new Audio("sound.mp3");
 				sound.play();
 				newMessage = false;

@@ -9,7 +9,7 @@ var generalChannelId = "invalid";
 //main server by the teachers
 var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 var newMessage = false;
-
+var soundSet = true;
 //Alternate server by a student
 //var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);
 
@@ -77,3 +77,9 @@ function createChannel()
 	websocket.send(JSONCreateChannel);
 }
 
+function changeSoundSetting(){
+	if(soundSet)
+		soundSet=false;
+	else
+		soundSet =true;
+}
