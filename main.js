@@ -24,7 +24,7 @@ websocket.onmessage = function(event){
 }
 
 websocket.onclose = function(){
-	console.log("Connection closed")
+	alert("Connection closed")
 }
 websocket.onerror =  function(event){
 	console.log(event);
