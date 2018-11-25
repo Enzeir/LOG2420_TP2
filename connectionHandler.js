@@ -10,15 +10,6 @@ class ConnectionHandler {
 			case "onMessage":
 				messageObserver.onMessage(msg)
 				break;
-			case "onCreateChannel":
-				this._onCreateChannel(msg);
-				break;
-			case "onJoinChannel":
-				this._onJoinChannel(msg);
-				break;
-			case "onLeaveChannel":
-				this._onLeaveChannel(msg);
-				break;
 			case "updateChannelsList":
 				channelObserver.updateChannelsList(msg);
 				getChannel(currentChannelId, true);
@@ -43,14 +34,6 @@ class ConnectionHandler {
 		var JSONCreateChannel = JSON.stringify(createChannelMessage);
 		websocket.send(JSONCreateChannel);
 		console.log("Creating channel: " + channelName);
-	}
-	_onJoinChannel(msg)
-	{
-		console.log(msg);
-	}
-	_onLeaveChannel(msg)
-	{
-		console.log(msg);
 	}
 	_onError(msg)
 	{

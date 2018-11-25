@@ -22,6 +22,7 @@ var channelObserver = {
       setAttributes(channelIcon,{"class": "channelIconBox", "onclick": "joinChannel('"+channels[i]["id"]+"')"});
       var iconType = "fas fa-plus";
       var name = channels[i]["name"];
+
       if(name  == "Général"){
         iconType = "fas fa-star";
         generalChannelId = channels[i]["id"];
@@ -43,6 +44,13 @@ var channelObserver = {
       channelIcon.appendChild(Icon);
       channel.appendChild(channelIcon);
       channel.appendChild(channelName);
+      if(name == "Général")
+      {
+        var defaultBubble = document.createElement('div');
+        setAttributes(defaultBubble,{"class": "generalChatDefaultBox"});
+        defaultBubble.innerText = "default";
+        channel.appendChild(defaultBubble);
+      }
       document.getElementById("channels").appendChild(channel);
       document.getElementsByClassName("channelIconBox")[0].removeAttribute("onclick");
   }
@@ -59,6 +67,5 @@ var channelObserver = {
       messageObserver.onMessage(test[i]);
     }
     document.getElementById("groupeActif").innerHTML = msg["data"]["name"];
-
   }
 }

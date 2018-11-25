@@ -5,7 +5,11 @@ var user = prompt("Please enter your name:");
 // j'ai set le currentChannelId dans updateChannelsList
 var currentChannelId = "invalid";
 var generalChannelId = "invalid";
+//TODO: uncomment a websocket and comment the othere depanding on which one you want to use
+//main server by the teachers
 //var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
+
+//Alternate server by a student
 var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);
 
 function updateUsername()
@@ -34,9 +38,10 @@ function sendMessage()
 	}
 }
 
-function getChannel(channelId, joined){
+function getChannel(channelId, joined)
+{
 	if(joined){
-		console.log("test");
+		console.log("getChannel: " + channelId);
 		var message = new Message("onGetChannel", channelId);
 		var JSONmessage = JSON.stringify(message);
 		websocket.send(JSONmessage);
