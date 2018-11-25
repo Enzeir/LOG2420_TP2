@@ -10,6 +10,7 @@ var generalChannelId = "invalid";
 var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 var newMessage = false;
 var soundSet = true;
+var isClosed = false;
 //Alternate server by a student
 //var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);
 
@@ -31,6 +32,7 @@ websocket.onmessage = function(event){
 
 /**Function that pops up a message when the websocket's connection to the server is closed.*/
 websocket.onclose = function(){
+	isClosed = true;
 	alert("Connection closed")
 }
 /**Function that writes the error when there is an error with the connection between the server and the websocket.*/
@@ -46,11 +48,13 @@ function sendMessage()
 {
 	var text = document.getElementById("messageInput").value;
 	document.getElementById("messageInput").value = "";
-	if(text != "")
-	{
+	if(text != ""){
 		var message = new Message("onMessage", currentChannelId,text,"");
 		var jSONmessage = JSON.stringify(message);
-		websocket.send(jSONmessage);
+		if(!isClosed)
+			websocket.send(jSONmessage);
+		else
+			alert("Connection closed");
 	}
 }
 
@@ -65,8 +69,10 @@ function getChannel(channelId, joined)
 		console.log("getChannel: " + channelId);
 		var message = new Message("onGetChannel", channelId);
 		var JSONmessage = JSON.stringify(message);
-		websocket.send(JSONmessage);
-	}
+		if(!isClosed)
+			websocket.send(JSONmessage);
+		else
+			alert("Connection closed");	}
 }
 
 /**
@@ -77,7 +83,10 @@ function joinChannel(channelId)
 {
 	var message = new Message("onJoinChannel",channelId, null, user, Date());
 	var jSONmessage = JSON.stringify(message);
-	websocket.send(jSONmessage);
+	if(!isClosed)
+		websocket.send(jSONmessage);
+	else
+		alert("Connection closed");
 	console.log("joined Channel: " + channelId);
 }
 
@@ -91,7 +100,10 @@ function leaveChannel(channelID)
 		currentChannelId = "invalid";
 	var message = new Message("onLeaveChannel", channelID, null, user, Date());
 	var JSONmessage = JSON.stringify(message);
-	websocket.send(JSONmessage);
+	if(!isClosed)
+		websocket.send(jSONmessage);
+	else
+		alert("Connection closed");
 	console.log("left channel: " + channelID);	
 }
 
@@ -101,8 +113,10 @@ function createChannel()
 	var channelName = prompt("Please enter the channel name: ");
 	var createChannelMessage = new Message("onCreateChannel", null, channelName, user, Date());
 	var JSONCreateChannel = JSON.stringify(createChannelMessage);
-	websocket.send(JSONCreateChannel);
-}
+	if(!isClosed)
+		websocket.send(JSONCreateChannel);
+	else
+		alert("Connection closed");}
 
 /**Function that changes the whether or not a sound plays when a new message comes in.  */
 function changeSoundSetting(){
