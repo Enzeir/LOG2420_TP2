@@ -1,6 +1,14 @@
+/**
+ * Class that handles the behavior depending on the type of message the websocket receives.
+ */
+
 class ConnectionHandler {
 	constructor(event)
 	{}
+	/**
+	 * Function that takes the message received by the websocket and depending on the type calls other functions.
+	 * @param {AnyType} event 
+	 */
 	websocketReceive(event)
 	{
 		var msg = JSON.parse(event.data)
@@ -26,21 +34,22 @@ class ConnectionHandler {
 				break;
 		}
 	}
-
-	_onCreateChannel(msg)
-	{
-		var channelName = prompt("Please enter the channel name: ");
-		var createChannelMessage = new Message("onCreateChannel", null, channelName, user, Date());
-		var JSONCreateChannel = JSON.stringify(createChannelMessage);
-		websocket.send(JSONCreateChannel);
-		console.log("Creating channel: " + channelName);
-	}
+	/**
+	 * Function called when the websocket receives a message of type onError
+	 * which creates a popup displaying the type of error.
+ 	 * @param {AnyType} msg 
+ 	 */
 	_onError(msg)
 	{
 		alert(msg["data"]);
 		console.log(msg);
 	}
 }
+/**
+ * Function that can multiple attributes to an element at once.
+ * @param {AnyType} el 
+ * @param {string} attrs 
+ */
 function setAttributes(el, attrs)
 {
     for (var key in attrs)
