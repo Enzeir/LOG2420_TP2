@@ -1,4 +1,3 @@
-
 class ConnectionHandler {
 	constructor(event)
 	{}
@@ -8,6 +7,7 @@ class ConnectionHandler {
 		var type = msg["eventType"];
 		switch(type){
 			case "onMessage":
+				newMessage = true;
 				messageObserver.onMessage(msg)
 				break;
 			case "updateChannelsList":

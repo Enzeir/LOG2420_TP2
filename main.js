@@ -8,6 +8,7 @@ var generalChannelId = "invalid";
 //TODO: uncomment a websocket and comment the othere depanding on which one you want to use
 //main server by the teachers
 var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
+var newMessage = false;
 
 //Alternate server by a student
 //var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);

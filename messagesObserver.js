@@ -14,8 +14,12 @@ var messageObserver = {
 				timeType = "dateRcvd";
 				setAttributes(name,{"class": "name"});
 				name.innerText= msg["sender"];
+				if(newMessage){
+				var sound = new Audio("sound.mp3");
+				sound.play();
+				newMessage = false;
+				}
 			}
-			
 			var receivedMsg = document.createElement('div');
 			setAttributes(receivedMsg,{"class": msgType});
 			receivedMsg.innerText= msg["data"];
@@ -30,8 +34,9 @@ var messageObserver = {
 			row.appendChild(receivedMsg);
 			row.appendChild(dateRcvd);
 			document.getElementById("chat").appendChild(row);
-		var test =	document.getElementById("chat");
-		test.scrollTop = test.scrollHeight;
+			var test =	document.getElementById("chat");
+			test.scrollTop = test.scrollHeight;
+		
     	}
 	}
 }
