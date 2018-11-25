@@ -7,10 +7,10 @@ var currentChannelId = "invalid";
 var generalChannelId = "invalid";
 //TODO: uncomment a websocket and comment the othere depanding on which one you want to use
 //main server by the teachers
-//var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
+var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 
 //Alternate server by a student
-var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);
+//var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);
 
 function updateUsername()
 {
@@ -26,7 +26,9 @@ websocket.onmessage = function(event){
 websocket.onclose = function(){
 	console.log("Connection closed")
 }
-
+websocket.onerror =  function(event){
+	console.log(event);
+}
 function sendMessage()
 {
 	var text = document.getElementById("messageInput").value;
@@ -50,7 +52,6 @@ function getChannel(channelId, joined)
 
 function joinChannel(channelId)
 {
-	currentChannelId = channelId;
 	var message = new Message("onJoinChannel",channelId, null, user, Date());
 	var jSONmessage = JSON.stringify(message);
 	websocket.send(jSONmessage);
