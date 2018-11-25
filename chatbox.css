@@ -322,15 +322,6 @@ div.dateSent {
     */
 
 }
-.setting{
-    background-color: Bisque;
-	align-items: center;
-	border-collapse: collapse;
-	border-left: 1px solid grey;
-	width: 72px;
-	height: 45px;
-
-}
 .chatBannerIconBox:hover .tooltipContainer {
     visibility: visible;
     transition-delay: 1s;
