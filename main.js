@@ -68,7 +68,9 @@ function getChannel(channelId, joined, changed)
 		if(nbrOfUnreadMsg.has(channelId) && nbrOfUnreadMsg.get(channelId) > 0 && changed && channelId != currentChannelId){
 			var nbr =document.getElementById("unreadMsgs").innerText;
 			document.getElementById("unreadMsgs").innerText = nbr - nbrOfUnreadMsg.get(channelId);
-			nbrOfUnreadMsg.set(channelId,0)	;
+			if(document.getElementById("unreadMsgs").innerText <0)
+				document.getElementById("unreadMsgs").innerText = 0;
+			nbrOfUnreadMsg.set(channelId, 0)	;
 		}
 		var message = new Message("onGetChannel", channelId);
 		var JSONmessage = JSON.stringify(message);
