@@ -15,24 +15,36 @@ var nbrOfUnreadMsg = new Map();
 //Alternate server by a student
 //var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);
 
+/**Function that writes de username in the proper field under the user icon. */
 function updateUsername()
 {
 	document.getElementById("usernameText").innerHTML = user;
 }
 
 var connection = new ConnectionHandler();
-	
+
+/**
+ * When the websocket receives a message the data is 
+ * sent over to the ConnectionHandler class to decide what to do with it.
+ */
 websocket.onmessage = function(event){
 	connection.websocketReceive(event);
 }
 
+/**Function that pops up a message when the websocket's connection to the server is closed.*/
 websocket.onclose = function(){
 	isClosed = true;
 	alert("Connection closed")
 }
+/**Function that writes the error when there is an error with the connection between the server and the websocket.*/
 websocket.onerror =  function(event){
 	console.log(event);
 }
+
+/**
+ * Function that takes care of taking the text that the user wrote and in the field and sends 
+ * it trough the websocket over to the server as a new message to be broadcasted to evreyone.
+ */
 function sendMessage()
 {
 	var text = document.getElementById("messageInput").value;
@@ -47,6 +59,11 @@ function sendMessage()
 	}
 }
 
+/**
+ * Function that sends a request to the server to get all the messages of the channel that the client has selected if he has joined it.
+ * @param {string} channelId - The Id of the channel the user wants to get the messages from.
+ * @param {boolean} joined - A value to determine whether or not the client has joined the channel. 
+ */
 function getChannel(channelId, joined)
 {
 	if(joined){
@@ -59,6 +76,10 @@ function getChannel(channelId, joined)
 			alert("Connection closed");	}
 }
 
+/**
+ * Function send a message to the server that the user joins the selected server.
+ * @param {string} channelId 
+ */
 function joinChannel(channelId)
 {
 	var message = new Message("onJoinChannel",channelId, null, user, Date());
@@ -71,6 +92,10 @@ function joinChannel(channelId)
 	console.log("joined Channel: " + channelId);
 }
 
+/**
+ * Function sends a message to the server that the user leaves the selected server.
+ * @param {string} channelID 
+ */
 function leaveChannel(channelID)
 {
 	if(channelID == currentChannelId)
@@ -85,6 +110,7 @@ function leaveChannel(channelID)
 	console.log("left channel: " + channelID);	
 }
 
+/**Function that creates a new channel with a name that the user selects after a prompt. */
 function createChannel()
 {
 	var channelName = prompt("Please enter the channel name: ");
@@ -95,6 +121,7 @@ function createChannel()
 	else
 		alert("Connection closed");}
 
+/**Function that changes the whether or not a sound plays when a new message comes in.  */
 function changeSoundSetting(){
 	if(soundSet)
 		soundSet=false;
