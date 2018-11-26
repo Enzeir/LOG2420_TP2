@@ -11,6 +11,7 @@ var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?us
 var newMessage = false;
 var soundSet = true;
 var isClosed = false;
+var nbrOfUnreadMsg = new Map();
 //Alternate server by a student
 //var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);
 
@@ -61,9 +62,10 @@ function getChannel(channelId, joined)
 function joinChannel(channelId)
 {
 	var message = new Message("onJoinChannel",channelId, null, user, Date());
-	var jSONmessage = JSON.stringify(message);
+	var JSONmessage = JSON.stringify(message);
+	nbrOfUnreadMsg.set(channelId,0);
 	if(!isClosed)
-		websocket.send(jSONmessage);
+		websocket.send(JSONmessage);
 	else
 		alert("Connection closed");
 	console.log("joined Channel: " + channelId);
@@ -73,10 +75,11 @@ function leaveChannel(channelID)
 {
 	if(channelID == currentChannelId)
 		currentChannelId = "invalid";
+	nbrOfUnreadMsg.delete(channelId);
 	var message = new Message("onLeaveChannel", channelID, null, user, Date());
 	var JSONmessage = JSON.stringify(message);
 	if(!isClosed)
-		websocket.send(jSONmessage);
+		websocket.send(JSONmessage);
 	else
 		alert("Connection closed");
 	console.log("left channel: " + channelID);	

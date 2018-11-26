@@ -24,6 +24,7 @@ var channelObserver = {
       var name = channels[i]["name"];
 
       if(name  == "Général"){
+        nbrOfUnreadMsg.set(channels[i]["id"],0);
         iconType = "fas fa-star";
         generalChannelId = channels[i]["id"];
         if(currentChannelId == "invalid")
@@ -46,6 +47,7 @@ var channelObserver = {
       channel.appendChild(channelName);
       if(name == "Général")
       {
+        
         var defaultBubble = document.createElement('div');
         setAttributes(defaultBubble,{"class": "generalChatDefaultBox"});
         defaultBubble.innerText = "default";

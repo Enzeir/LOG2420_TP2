@@ -37,7 +37,13 @@ var messageObserver = {
 			var test =	document.getElementById("chat");
 			test.scrollTop = test.scrollHeight;
 		
-    	}
+    	}else{
+			if (nbrOfUnreadMsg.has(msg["channelId"])){
+				var number = nbrOfUnreadMsg.get(msg["channelId"]) + 1;
+				nbrOfUnreadMsg.set(msg["channelId"],number)
+			}
+		}
+		console.log(nbrOfUnreadMsg);
 	}
 }
   
