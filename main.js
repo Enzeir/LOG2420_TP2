@@ -63,10 +63,16 @@ function sendMessage()
  * Function that sends a request to the server to get all the messages of the channel that the client has selected if he has joined it.
  * @param {string} channelId - The Id of the channel the user wants to get the messages from.
  * @param {boolean} joined - A value to determine whether or not the client has joined the channel. 
+ * @param {boolean} changed - A value to determine whether or not the user changed the channel. 
  */
-function getChannel(channelId, joined)
+function getChannel(channelId, joined, changed)
 {
 	if(joined){
+		if(nbrOfUnreadMsg.has(channelId) && nbrOfUnreadMsg.get(channelId) > 0 && changed){
+			var nbr =document.getElementById("unreadMsgs").innerText;
+			document.getElementById("unreadMsgs").innerText = nbr - nbrOfUnreadMsg.get(channelId);
+			nbrOfUnreadMsg.set(channelId,0)	;
+		}
 		console.log("getChannel: " + channelId);
 		var message = new Message("onGetChannel", channelId);
 		var JSONmessage = JSON.stringify(message);
@@ -85,6 +91,7 @@ function joinChannel(channelId)
 	var message = new Message("onJoinChannel",channelId, null, user, Date());
 	var JSONmessage = JSON.stringify(message);
 	nbrOfUnreadMsg.set(channelId,0);
+	console.log(nbrOfUnreadMsg);
 	if(!isClosed)
 		websocket.send(JSONmessage);
 	else
@@ -100,7 +107,7 @@ function leaveChannel(channelID)
 {
 	if(channelID == currentChannelId)
 		currentChannelId = "invalid";
-	nbrOfUnreadMsg.delete(channelId);
+
 	var message = new Message("onLeaveChannel", channelID, null, user, Date());
 	var JSONmessage = JSON.stringify(message);
 	if(!isClosed)

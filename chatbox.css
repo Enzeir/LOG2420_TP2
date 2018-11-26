@@ -345,3 +345,6 @@ div.dateSent {
     position: absolute;
     z-index: 1;
 }
+#unreadMsgs{
+    color:red;
+}

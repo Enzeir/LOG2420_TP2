@@ -16,7 +16,7 @@ var channelObserver = {
     console.log(channels);
     for (var i in channels) {
       var channel = document.createElement('div');
-      setAttributes(channel,{"onclick": "getChannel('"+channels[i]["id"]+"',"+channels[i]["joinStatus"]+")"});
+      setAttributes(channel,{"onclick": "getChannel('"+channels[i]["id"]+"',"+channels[i]["joinStatus"]+","+true+")"});
       if(i%2 == 0)
       {
         setAttributes(channel,{"class": "chatEvenChannelBoard"});
@@ -75,9 +75,9 @@ var channelObserver = {
     while (myNode.firstChild) {
       myNode.removeChild(myNode.firstChild);
     }
-    var test = msg.data["messages"];
-    for (var i in test) {
-      messageObserver.onMessage(test[i]);
+    var messages = msg.data["messages"];
+    for (var i in messages) {
+      messageObserver.onMessage(messages[i]);
     }
     document.getElementById("groupeActif").innerHTML = msg["data"]["name"];
   }

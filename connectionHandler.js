@@ -17,10 +17,11 @@ class ConnectionHandler {
 			case "onMessage":
 				newMessage = true;
 				messageObserver.onMessage(msg)
+				updateReceivedMessages();
 				break;
 			case "updateChannelsList":
 				channelObserver.updateChannelsList(msg);
-				getChannel(currentChannelId, true);
+				getChannel(currentChannelId, true, false);
 				break;
 			case "onError":
 				this._onError(msg);
@@ -56,4 +57,15 @@ function setAttributes(el, attrs)
     {
         el.setAttribute(key, attrs[key]);
     }
+}
+/**
+ * Function that update the value of unreadMsg.
+ * */
+function updateReceivedMessages(){
+	var count = 0;
+	for (var i of nbrOfUnreadMsg.values()){
+		count += i;
+		console.log( count);
+	}
+	document.getElementById("unreadMsgs").innerText = count;
 }
