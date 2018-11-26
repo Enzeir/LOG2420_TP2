@@ -7,8 +7,9 @@ var messageObserver = {
 	 * the function creates all the elements required to show a message from either the user or the other users 
 	 * in the chat area if the message is from the channel that the user is currently on.
 	 * @param {AnyType} msg 
+	 * @param {boolean} calledFromGetChannel to verify if a sound must be played
 	 */
-   onMessage: function(msg) {
+   onMessage: function(msg, calledFromGetChannel) {
 		var row = document.createElement('div');
 		if(currentChannelId == msg["channelId"]){
 			setAttributes(row,{"class": "row"});
@@ -20,10 +21,10 @@ var messageObserver = {
 				timeType = "dateRcvd";
 				setAttributes(name,{"class": "name"});
 				name.innerText= msg["sender"];
-				if(newMessage && soundSet){
-				var sound = new Audio("sound.mp3");
-				sound.play();
-				newMessage = false;
+				if(newMessage && soundSet && !calledFromGetChannel){
+					var sound = new Audio("sound.mp3");
+					sound.play();
+					newMessage = false;
 				}
 			}
 			var receivedMsg = document.createElement('div');
@@ -44,7 +45,7 @@ var messageObserver = {
 			test.scrollTop = test.scrollHeight;
 		
     	}else{
-			if (nbrOfUnreadMsg.has(msg["channelId"])){
+			if (nbrOfUnreadMsg.has(msg["channelId"]) ){
 				var number = nbrOfUnreadMsg.get(msg["channelId"]) + 1;
 				nbrOfUnreadMsg.set(msg["channelId"],number)
 			}

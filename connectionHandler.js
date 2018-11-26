@@ -16,7 +16,7 @@ class ConnectionHandler {
 		switch(type){
 			case "onMessage":
 				newMessage = true;
-				messageObserver.onMessage(msg)
+				messageObserver.onMessage(msg,false)
 				updateReceivedMessages();
 				break;
 			case "updateChannelsList":

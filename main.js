@@ -60,6 +60,7 @@ function sendMessage()
  */
 function getChannel(channelId, joined, changed)
 {
+	console.log("test");
 	if(joined){
 		if(nbrOfUnreadMsg.has(channelId) && nbrOfUnreadMsg.get(channelId) > 0 && changed){
 			var nbr =document.getElementById("unreadMsgs").innerText;

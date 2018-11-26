@@ -75,7 +75,7 @@ var channelObserver = {
     }
     var messages = msg.data["messages"];
     for (var i in messages) {
-      messageObserver.onMessage(messages[i]);
+      messageObserver.onMessage(messages[i],true);
     }
     document.getElementById("groupeActif").innerHTML = msg["data"]["name"];
   }
