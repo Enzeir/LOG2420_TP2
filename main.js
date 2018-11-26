@@ -1,19 +1,12 @@
 
 var user = prompt("Please enter your name:");
-//default channel to join is general channel
-//le generale n'a pas toujours le meme id d'apres mes tests
-// j'ai set le currentChannelId dans updateChannelsList
 var currentChannelId = "invalid";
 var generalChannelId = "invalid";
-//TODO: uncomment a websocket and comment the othere depanding on which one you want to use
-//main server by the teachers
 var	websocket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 var newMessage = false;
 var soundSet = true;
 var isClosed = false;
 var nbrOfUnreadMsg = new Map();
-//Alternate server by a student
-//var	websocket = new WebSocket("ws://inter-host.ca:3000/chatservice?username=" + user);
 
 /**Function that writes de username in the proper field under the user icon. */
 function updateUsername()
