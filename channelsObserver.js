@@ -4,7 +4,7 @@ var channelObserver = {
    * Function called when the connectionHandler receives a message of type updateChannelsList from the websocket
    * the function creates all the elements required to create the list of channels in the proper location 
    * along with the proper behavior for when one is clicked. 
-   * @param {AnyType} msg 
+   * @param {AnyType} msg -Information of the message sent by the server trough the websocket
    */
    updateChannelsList: function(msg) {
     var myNode = document.getElementById("channels");
@@ -65,7 +65,7 @@ var channelObserver = {
 /**
  * Function is called when the connection handler received a message of type onGetChannel by the websocket
  * the function clears the chat section and then shows all the messages contained in the selected channel.
- * @param {AnyType} msg 
+ * @param {AnyType} msg -Information of the message sent by the server trough the websocket
  */
   onGetChannel : function(msg){
     var myNode = document.getElementById("chat");

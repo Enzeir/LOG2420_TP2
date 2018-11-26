@@ -6,8 +6,8 @@ var messageObserver = {
 	 * Function called when the connectionHandler has received a message of type onMessage from the websocket
 	 * the function creates all the elements required to show a message from either the user or the other users 
 	 * in the chat area if the message is from the channel that the user is currently on.
-	 * @param {AnyType} msg 
-	 * @param {boolean} calledFromGetChannel to verify if a sound must be played
+	 * @param {AnyType} msg -Information of the message sent by the server trough the websocket
+	 * @param {boolean} calledFromGetChannel -To verify if a sound must be played
 	 */
    onMessage: function(msg, calledFromGetChannel) {
 		var row = document.createElement('div');

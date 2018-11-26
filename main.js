@@ -8,7 +8,7 @@ var soundSet = true;
 var isClosed = false;
 var nbrOfUnreadMsg = new Map();
 
-/**Function that writes de username in the proper field under the user icon. */
+/**Function that writes the username in the proper field under the user icon. */
 function updateUsername()
 {
 	document.getElementById("usernameText").innerHTML = user;
@@ -19,6 +19,7 @@ var connection = new ConnectionHandler();
 /**
  * When the websocket receives a message the data is 
  * sent over to the ConnectionHandler class to decide what to do with it.
+ * @param {AnyType} event - contains the information of the message sent by the server.
  */
 websocket.onmessage = function(event){
 	connection.websocketReceive(event);
@@ -29,7 +30,10 @@ websocket.onclose = function(){
 	isClosed = true;
 	alert("Connection closed")
 }
-/**Function that writes the error when there is an error with the connection between the server and the websocket.*/
+/**
+ * Function that writes the error when there is an error with the connection between the server and the websocket.
+ * @param {AnyType} event - contains the information of the message sent by the server.
+ */
 websocket.onerror =  function(event){
 	console.log(event);
 }
@@ -76,7 +80,7 @@ function getChannel(channelId, joined, changed)
 
 /**
  * Function send a message to the server that the user joins the selected server.
- * @param {string} channelId 
+ * @param {string} channelId -The Id of the channel that the user wants to join.
  */
 function joinChannel(channelId)
 {
@@ -91,7 +95,7 @@ function joinChannel(channelId)
 
 /**
  * Function sends a message to the server that the user leaves the selected server.
- * @param {string} channelID 
+ * @param {string} channelID -The Id of the channel that the user wants to join.
  */
 function leaveChannel(channelID)
 {

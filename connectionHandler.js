@@ -7,7 +7,7 @@ class ConnectionHandler {
 	{}
 	/**
 	 * Function that takes the message received by the websocket and depending on the type calls other functions.
-	 * @param {AnyType} event 
+	 * @param {AnyType} event - all the information of the message sent by the server trough the websocket 
 	 */
 	websocketReceive(event)
 	{
@@ -38,7 +38,7 @@ class ConnectionHandler {
 	/**
 	 * Function called when the websocket receives a message of type onError
 	 * which creates a popup displaying the type of error.
- 	 * @param {AnyType} msg 
+ 	 * @param {AnyType} msg - all the information of the message from the websocket
  	 */
 	_onError(msg)
 	{
@@ -48,8 +48,8 @@ class ConnectionHandler {
 }
 /**
  * Function that can multiple attributes to an element at once.
- * @param {AnyType} el 
- * @param {string} attrs 
+ * @param {AnyType} el - element that has to be given new attributes
+ * @param {string} attrs - attributes to be added to the element
  */
 function setAttributes(el, attrs)
 {
