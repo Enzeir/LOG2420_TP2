@@ -65,7 +65,6 @@ function updateReceivedMessages(){
 	var count = 0;
 	for (var i of nbrOfUnreadMsg.values()){
 		count += i;
-		console.log( count);
 	}
 	document.getElementById("unreadMsgs").innerText = count;
 }

@@ -7,13 +7,11 @@ var channelObserver = {
    * @param {AnyType} msg 
    */
    updateChannelsList: function(msg) {
-    console.log("--------------------------");
     var myNode = document.getElementById("channels");
     while (myNode.firstChild) {
       myNode.removeChild(myNode.firstChild);
     }
     var channels = msg.data;
-    console.log(channels);
     for (var i in channels) {
       var channel = document.createElement('div');
       setAttributes(channel,{"onclick": "getChannel('"+channels[i]["id"]+"',"+channels[i]["joinStatus"]+","+true+")"});

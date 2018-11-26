@@ -66,7 +66,6 @@ function getChannel(channelId, joined, changed)
 			document.getElementById("unreadMsgs").innerText = nbr - nbrOfUnreadMsg.get(channelId);
 			nbrOfUnreadMsg.set(channelId,0)	;
 		}
-		console.log("getChannel: " + channelId);
 		var message = new Message("onGetChannel", channelId);
 		var JSONmessage = JSON.stringify(message);
 		if(!isClosed)
@@ -84,12 +83,10 @@ function joinChannel(channelId)
 	var message = new Message("onJoinChannel",channelId, null, user, Date());
 	var JSONmessage = JSON.stringify(message);
 	nbrOfUnreadMsg.set(channelId,0);
-	console.log(nbrOfUnreadMsg);
 	if(!isClosed)
 		websocket.send(JSONmessage);
 	else
 		alert("Connection closed");
-	console.log("joined Channel: " + channelId);
 }
 
 /**
@@ -107,7 +104,6 @@ function leaveChannel(channelID)
 		websocket.send(JSONmessage);
 	else
 		alert("Connection closed");
-	console.log("left channel: " + channelID);	
 }
 
 /**Function that creates a new channel with a name that the user selects after a prompt. */

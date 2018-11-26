@@ -48,9 +48,8 @@ var messageObserver = {
 				var number = nbrOfUnreadMsg.get(msg["channelId"]) + 1;
 				nbrOfUnreadMsg.set(msg["channelId"],number)
 			}
-			console.log(nbrOfUnreadMsg);
 		}
-    	}
 	}
+}
 
   
